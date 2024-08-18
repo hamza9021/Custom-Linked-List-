@@ -49,17 +49,32 @@ public class Main {
 //
 //        list.displayReverse();
 
+//
+//        CircularCustomLinkedList list = new CircularCustomLinkedList();
+//        list.insertFirst(90);
+//        list.insertFirst(90);
+//        list.insertFirst(90);
+//        list.insertFirst(90);
+//
+//        list.display();
 
-        CircularCustomLinkedList list = new CircularCustomLinkedList();
-        list.insertFirst(90);
-        list.insertFirst(90);
-        list.insertFirst(90);
-        list.insertFirst(90);
 
+        SinglyCustomLinkedList list = new SinglyCustomLinkedList();
+
+////        list.insertRecursion(90,2);
+//        list.display();
+//        list.duplicates();
+//        System.out.println();
+//        list.display();
+
+
+        list.insertLast(0);
+        list.insertLast(-1);
+        list.insertLast(10);
+        list.insertLast(5);
+        list.insertLast(4);
+        list.insertLast(7);
+        list.bubbleSort(5,0);
         list.display();
-
-
-
     }
-
 }

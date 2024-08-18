@@ -38,7 +38,7 @@ public class SinglyCustomLinkedList {
             insertFirst(val);
             return;
         }
-        if(index==size){
+        if(index==size-1){
             insertLast(val);
         }
         Node temp = head;
@@ -50,6 +50,21 @@ public class SinglyCustomLinkedList {
         temp.next = node;
         size++;
 
+    }
+
+    public void insertRecursion(int val,int index){
+        head = insertRecursion(val,index,head);
+    }
+    private Node insertRecursion(int val,int index,Node node){
+        if(index == 0 ){
+            Node temp = new Node(val,node);
+            size++;
+            return temp;
+        }
+        index = index - 1;
+        node.next = insertRecursion(val, index ,node.next);
+
+        return node;
     }
 
 
@@ -94,16 +109,22 @@ public class SinglyCustomLinkedList {
     }
 
 
-    public Node getNode(int val){
-        Node temp = head;
-        while(temp!=null) {
-            if (temp.value == val) {
-                return temp;
-            }
-            temp = temp.next;
+    public Node getNode(int index){
+        if(index==0){
+            return head;
         }
-        return null;
+        if(index == size-1){
+            return tail;
+        }
+       Node temp = head.next;
+       while(index > 1){
+           temp = temp.next;
+           index--;
+       }
+       return temp;
     }
+
+
 
     public void display(){
         Node temp = head;
@@ -127,4 +148,62 @@ public class SinglyCustomLinkedList {
             this.next = next;
         }
     }
+
+
+//    Duplicats
+
+    public void duplicates(){
+        Node node = head;
+        while(node.next != null){
+            if(node.value == node.next.value){
+                node.next = node.next.next;
+                size--;
+            }
+            else {
+                node = node.next;
+            }
+        }
+        tail = node;
+        tail.next= null;
+    }
+
+    public void bubbleSort(int row, int col) {
+        if (row == 0) {
+            return;
+        }
+
+        if (col < row) {
+            Node first = getNode(col);
+            Node second = getNode(col + 1);
+
+            if (first.value > second.value) {
+                // Swap nodes
+                if (first == head) {
+                    first.next = second.next;
+                    second.next = first;
+                    head = second;
+                } else if (second == tail) {
+                    Node pre = getNode(col - 1);
+                    pre.next = second;
+                    tail = first;
+                    first.next = null;
+                    second.next = first;
+                } else {
+                    Node pre = getNode(col - 1);
+                    pre.next = second;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+            bubbleSort(row, col + 1);
+        } else {
+            bubbleSort(row - 1, 0);
+        }
+    }
+
+
+    
+
+
+
 }
