@@ -76,5 +76,7 @@ public class Main {
         list.insertLast(7);
         list.bubbleSort(5,0);
         list.display();
+
+        
     }
 }
