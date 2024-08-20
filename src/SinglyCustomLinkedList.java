@@ -201,9 +201,33 @@ public class SinglyCustomLinkedList {
         }
     }
 
+    public void reversingList(Node node){
+       if(node==null){
+           head = tail;
+           return;
+       }
+       reversingList(node.next);
+       tail.next = node;
+       tail = node;
+       tail.next = null;
+    }
 
-    
+    public void inplaceReversal(){
+        if(size<2){
+            return;
+        }
+        Node previous = null;
+        Node present = head;
+        Node next = head.next;
 
-
-
+        while(present!=null){
+            present.next = previous;
+            previous = present;
+            if(next != null){
+                next = next.next;
+            }
+            present = next;
+        }
+        head = previous;
+    }
 }
