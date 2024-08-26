@@ -223,11 +223,13 @@ public class SinglyCustomLinkedList {
         while(present!=null){
             present.next = previous;
             previous = present;
+            present = next;
             if(next != null){
                 next = next.next;
             }
-            present = next;
         }
         head = previous;
     }
+
+
 }
